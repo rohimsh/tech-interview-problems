@@ -8,6 +8,23 @@ public class CoinChange {
 	    int n = 5;
 	    
 	    System.out.println(possibleWays(arr, n));
+	    System.out.println(betterPossibleWays(arr, n));
+	    
+	}
+
+
+	private static int betterPossibleWays(int[] arr, int n) {
+	
+		int[] table = new int[n + 1];
+		table[0] = 1;
+		
+		for(int i = 0; i < arr.length; i++) {
+			for(int j = arr[i]; j <= n; j++) {
+				table[j] += table[j - arr[i]];
+			}
+		}
+		
+		return table[n];
 	}
 
 	private static int possibleWays(int[] arr, int n) {
@@ -38,5 +55,8 @@ public class CoinChange {
 		
 		return table[len][n];
 	}
+	
+	
+	
 	
 }
