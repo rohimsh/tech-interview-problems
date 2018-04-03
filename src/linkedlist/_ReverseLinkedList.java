@@ -3,7 +3,7 @@ package linkedlist;
 import models.ListNode;
 import utils.Util;
 
-public class ReverseLinkedList {
+public class _ReverseLinkedList {
 	public static void main(String[] args) {
     	ListNode head;
         
@@ -29,13 +29,13 @@ public class ReverseLinkedList {
 	public static ListNode reverseListIteratively(ListNode head) {
 		if(head == null || head.next == null)
 			return head;
-		ListNode prev = null, tmp = head, next = head.next;
+		ListNode prev = null, curr = head, next = head.next;
 		
-		while(tmp != null) {
-			next = tmp.next;
-			tmp.next = prev;
-			prev = tmp;
-			tmp = next;
+		while(curr != null) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
 		}
 		
 		return prev;

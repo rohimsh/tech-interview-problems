@@ -6,7 +6,7 @@ import models.ListNode;
  * @author rohitmishra
  * @see https://www.geeksforgeeks.org/write-a-function-to-get-the-intersection-point-of-two-linked-lists/
  */
-public class FindIntersectionPointOfTwoLinkedLists {
+public class _FindIntersectionPointOfTwoLinkedLists {
 	public static void main(String[] args) {
     	ListNode head, root;
         

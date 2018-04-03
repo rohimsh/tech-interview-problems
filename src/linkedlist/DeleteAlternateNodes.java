@@ -1,12 +1,14 @@
 package linkedlist;
 
 import models.ListNode;
+import utils.Util;
+
 /**
  * 
  * @author rohitmishra
- * @see https://www.geeksforgeeks.org/write-a-c-function-to-print-the-middle-of-the-linked-list/
+ * @see https://www.geeksforgeeks.org/delete-alternate-nodes-of-a-linked-list/
  */
-public class FindMiddleOfLinkedList {
+public class DeleteAlternateNodes {
 	public static void main(String[] args) {
     	ListNode head;
         
@@ -19,22 +21,16 @@ public class FindMiddleOfLinkedList {
     	head.next.next.next.next.next = new ListNode(6);
     	head.next.next.next.next.next.next = new ListNode(7);
     	head.next.next.next.next.next.next.next = new ListNode(8);
-
-        ListNode midNode = findMiddleOfList(head);
-        System.out.println(midNode.val);
+    	
+    	deleteAlternateNodes(head);
+    	Util.printLinkedList(head);
 	}
 
-	public static ListNode findMiddleOfList(ListNode head) {
-		if(head == null)
-			return null;
-		
-		ListNode slow = head, fast = head;
-		
-		while(fast != null && fast.next != null) {
-			slow = slow.next;
-			fast = fast.next.next;
-		}
-		
-		return slow;
+	private static void deleteAlternateNodes(ListNode head) {
+		if(head == null || head.next == null)
+			return;
+		deleteAlternateNodes(head.next.next);
+		head.next = head.next.next;
 	}
+	
 }

@@ -3,11 +3,11 @@ package linkedlist;
 import models.ListNode;
 import utils.Util;
 
-public class MergeTwoSortedLinkedLists {
+public class _MergeTwoSortedLinkedLists {
 	public static void main(String[] args) {
     	ListNode head, root;
         
-        /* Constructed Linked List is 1->4->5->6->8->6->10->13->14->null */
+        /* Constructed Linked List is 1->4->5->6->8->10->13->14->null */
     	head = new ListNode(1);
     	head.next = new ListNode(4);
     	head.next.next = new ListNode(5);

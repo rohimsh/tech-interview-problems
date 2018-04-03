@@ -3,7 +3,7 @@ package linkedlist;
 import models.ListNode;
 import utils.Util;
 
-public class DetectAndRemoveLoopInLinkedList {
+public class _DetectAndRemoveLoopInLinkedList {
 	public static void main(String[] args) {
     	ListNode head;
         
@@ -44,7 +44,7 @@ public class DetectAndRemoveLoopInLinkedList {
 		
 		if(slow == fast) {
 			System.out.println("Loop found");
-			//Remove loop
+			//Start removing loop
 			slow = head;
 			while(slow.next != fast.next) {
 				slow = slow.next;

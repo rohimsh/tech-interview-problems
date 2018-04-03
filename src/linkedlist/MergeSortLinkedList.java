@@ -42,6 +42,6 @@ public class MergeSortLinkedList {
 	}
 
 	private static ListNode merge(ListNode head, ListNode root) {
-		return MergeTwoSortedLinkedLists.mergeSortedLinkedLists(head, root);
+		return _MergeTwoSortedLinkedLists.mergeSortedLinkedLists(head, root);
 	}
 }
