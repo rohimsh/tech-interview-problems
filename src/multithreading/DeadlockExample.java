@@ -1,6 +1,6 @@
 package multithreading;
 
-public class Deadlock1 {
+public class DeadlockExample {
 
 	public static void main(String[] args) {
 		final String FIRST = "FIRST";
