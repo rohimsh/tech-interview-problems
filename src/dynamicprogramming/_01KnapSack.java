@@ -12,6 +12,17 @@ public class _01KnapSack {
 	    int n = profit.length;
 	    System.out.println(maxProfitRecursive(profit, weight, size, gain, n - 1));
 	    System.out.println(maxProfitUsingDP(profit, weight, size, n - 1));
+	    System.out.println(betterMaxProfitUsingDP(profit, weight, size, n - 1));
+	}
+
+
+	private static int betterMaxProfitUsingDP(int[] profit, int[] weight, int size, int n) {
+		int[] mem = new int[size + 1];
+		for(int i = 0; i < n; i++) {
+			for(int j=size; j>=weight[i]; j--)
+				mem[j] = Math.max(mem[j] , profit[i] + mem[j - weight[i]]);
+		}
+		return mem[size];
 	}
 
 
@@ -24,8 +35,8 @@ public class _01KnapSack {
 		if(weight[n] <= size) {
 			 includingThis = maxProfitRecursive(profit, weight, size - weight[n], gain + profit[n], n - 1);
 			 includingThis += profit[n];
-			 }
-		
+		}
+	
 		excludingThis = maxProfitRecursive(profit, weight, size, gain, n - 1);
 		
 		return Math.max(includingThis, excludingThis);

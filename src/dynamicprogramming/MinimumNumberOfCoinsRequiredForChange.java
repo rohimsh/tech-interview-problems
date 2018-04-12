@@ -10,8 +10,23 @@ import java.util.Arrays;
 public class MinimumNumberOfCoinsRequiredForChange {
 	public static void main(String[] args) {
         int coins[] = {9, 6, 5, 1};
-        int value = 11;
+        int value = 50;
+        System.out.println(findMinimumNumberOfCoinsRequiredUsingRecursion(coins, value));
         System.out.println(findMinimumNumberOfCoinsRequired(coins, value));
+	}
+
+	private static int findMinimumNumberOfCoinsRequiredUsingRecursion(int[] coins, int value) {
+		if(value < 0)
+			return 0;
+		
+		int min = Integer.MAX_VALUE;
+		
+		for(int i = 0; i < coins.length; i++) {
+			int res = findMinimumNumberOfCoinsRequiredUsingRecursion(coins, value - coins[i]) + 1;
+			min = Math.min(min, res);
+		}
+		
+		return min;
 	}
 
 	private static int findMinimumNumberOfCoinsRequired(int[] coins, int value) {
@@ -19,7 +34,8 @@ public class MinimumNumberOfCoinsRequiredForChange {
 		int table[] = new int[value + 1];
 		for(int i = 0; i <= value; i++){
 			table[i] = Integer.MAX_VALUE;
-		}		
+		}	
+		
 		table[0] = 0;
 
 		for(int i = 1; i <= value; i++) {
@@ -32,7 +48,7 @@ public class MinimumNumberOfCoinsRequiredForChange {
 			}
 		}
 		
-		System.out.println(Arrays.toString(table));
+//		System.out.println(Arrays.toString(table));
 		
 	return table[value];	
 	}

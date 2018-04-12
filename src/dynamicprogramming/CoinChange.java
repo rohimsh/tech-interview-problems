@@ -7,9 +7,22 @@ public class CoinChange {
 	    int arr[] = {2, 1, 3};
 	    int n = 5;
 	    
+	    System.out.println(possibleWaysRecursive(arr, n, arr.length));
 	    System.out.println(possibleWays(arr, n));
 	    System.out.println(betterPossibleWays(arr, n));
 	    
+	}
+
+
+	private static int possibleWaysRecursive(int[] arr, int n, int m) {
+		if(n == 0)
+			return 1;
+		if(n < 0)
+			return 0;
+		if(m <= 0 && n > 0)
+			return 0;
+		
+		return possibleWaysRecursive(arr, n - arr[m - 1], m) + possibleWaysRecursive(arr, n, m - 1);
 	}
 
 
@@ -50,8 +63,8 @@ public class CoinChange {
 			}
 		}
 		
-		for(int i = 0; i < table.length; i++)
-			System.out.println(Arrays.toString(table[i]));
+//		for(int i = 0; i < table.length; i++)
+//			System.out.println(Arrays.toString(table[i]));
 		
 		return table[len][n];
 	}
