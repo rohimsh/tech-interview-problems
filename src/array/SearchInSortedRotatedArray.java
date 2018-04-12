@@ -43,9 +43,9 @@ public class SearchInSortedRotatedArray {
 		
 		int pivot = findPivotInSortedRotatedArray(arr, 0, n);
 		if(pivot != -1 && arr[pivot] <= key)
-			return Util.binarySearch(arr, pivot, n, key);
+			return Util.binarySearchRecursive(arr, pivot, n, key);
 		else 
-			return Util.binarySearch(arr, 0, pivot, key);
+			return Util.binarySearchRecursive(arr, 0, pivot, key);
 	}
 
 	private static int findPivotInSortedRotatedArray(int[] arr, int start, int end) {

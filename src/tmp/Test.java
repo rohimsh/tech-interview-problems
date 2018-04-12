@@ -6,29 +6,22 @@ import java.util.PriorityQueue;
 
 public class Test{
 
+	int val;
+	Test(){
+		
+	}
+	
+	static class TestInner{
+		private int inter;
+	}
     public static void main(String args[])
     {
-		PriorityQueue<Integer> queue = new PriorityQueue<Integer>(Collections.reverseOrder());
-		queue.add(10);
-		queue.add(8);
-		queue.add(5);
-		queue.add(3);
-		queue.add(2);
-		
-		Iterator<Integer> itr = queue.iterator();
-		
-		while(itr.hasNext()) {
-			System.out.println(itr.next());
-		}
-		
-		queue.add(1);
-		queue.add(7);
-		
-		Iterator<Integer> nitr = queue.iterator();
-		
-		while(nitr.hasNext()) {
-			System.out.println(nitr.next());
-		}
-	}
+    	Test t = new Test();
+    	System.out.println(t.val);
+    	System.out.println();
+    	class BC{
+    		
+    	}
+    }
 }
 

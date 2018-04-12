@@ -2,7 +2,7 @@ package multithreading;
 
 public class OddEvenUsingWaitNotify implements Runnable{
 	public static final int MAX = 10;
-	public static final String MONITOR = "monitor";
+	public static final Object MONITOR = new Object();
 	
 	private int val;
 	

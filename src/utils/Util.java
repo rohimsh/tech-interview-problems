@@ -24,7 +24,7 @@ public class Util {
 		
 	}
 	
-	public static int binarySearch(int[] arr, int start, int end, int key) {
+	public static int binarySearchIterative(int[] arr, int start, int end, int key) {
 		
 		int index = -1;
 		while(start <= end) {
@@ -33,15 +33,51 @@ public class Util {
 			
 			if(arr[mid] == key) {
 				return mid;
-			} else if(arr[mid] > arr[start]) {
-				start = mid;
+			} else if(arr[mid] < key) {
+				start = mid + 1;
 			} else {
-				end = mid;
+				end = mid - 1;
 			}	
 		}
 		return index;
 	}
-
+	
+	
+	public static int binarySearchRecursive(int[] arr, int start, int end, int key) {
+		if(start <= end) {
+			int mid = (start + end) / 2;
+			
+			if(arr[mid] == key)
+				return mid;
+			
+			if(arr[mid] < key)
+				return binarySearchRecursive(arr, mid + 1, end, key);
+			else
+				return binarySearchIterative(arr, start, mid - 1, key);
+			
+		}
+		return -1;
+	}
+	
+	public static int findPivotInRotatedArray(int[] arr, int lo, int hi) {
+		if(hi < lo)
+			return -1;
+		if(lo == hi)
+			return lo;
+		
+		int mid = (lo + hi) / 2;
+		if(mid < hi && arr[mid] > arr[mid + 1])
+			return mid;
+		if(mid > lo && arr[mid] < arr[mid - 1])
+			return mid - 1;
+		
+		if(arr[lo] < arr[mid])
+			return findPivotInRotatedArray(arr, mid + 1, hi);
+		else
+			return findPivotInRotatedArray(arr, lo, mid - 1);
+		
+	}
+	
 	public static void swap(int[] arr, int i, int j) {
 		
 		int tmp = arr[i];
