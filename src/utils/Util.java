@@ -144,6 +144,33 @@ public class Util {
         System.out.println();
 	}
 
+	// Returns true if 'ch2' has higher or same precedence as 'ch1',
+    // otherwise returns false.
+	
+	public static boolean hasPrecedence(char ch1, char ch2) {
+		if(ch2 == '(' || ch2 == ')')
+			return false;
+		if((ch1 == '*' || ch1 == '/') && (ch2 == '+' || ch2 == '-'))
+			return false;
+		if((ch1 == '^') && (ch2 == '*' || ch2 == '/' || ch2 == '+' || ch2 == '-'))
+			return false;
+		return true;
+	}
 
+	public static Integer eval(Integer m, Integer n, Character operand) {
+		switch(operand) {
+		case '+':
+			return n + m;
+		case '-':
+			return n - m;
+		case '*':
+			return n * m;
+		case '/':
+			return n / m;
+		case '^':
+			return (int) Math.pow(n, m);
+		}
+		return 0;
+	}
 	
 }
