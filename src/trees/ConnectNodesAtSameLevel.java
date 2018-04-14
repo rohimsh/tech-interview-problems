@@ -12,13 +12,64 @@ public class ConnectNodesAtSameLevel {
 		root.right = new TreeLinkNode(3);
 		root.left.left = new TreeLinkNode(4);
 		root.left.right = new TreeLinkNode(5);
-		root.right.left = new TreeLinkNode(6);
-		root.right.right = new TreeLinkNode(7);
-		
-		linkedNodesOnSameLevel(root);
+		root.right.right = new TreeLinkNode(6);
+		root.left.right.left = new TreeLinkNode(7);
+		root.right.right.left = new TreeLinkNode(8);
+
+//		linkedNodesOnSameLevel(root);
+		connectAdjacentNodes(root);
 		printNodesOnSameLevel(root);
 	}
 
+	private static void connectAdjacentNodes(TreeLinkNode root) {
+		if(root == null)
+			return;
+		root.next = null;
+		connectAdjacentNodesUtil(root);
+	}
+
+	
+	
+	private static void connectAdjacentNodesUtil(TreeLinkNode root) {
+		if(root == null)
+			return;
+
+		if(root.left != null) {
+			if(root.right != null)
+				root.left.next = root.right;
+			else
+				root.left.next = getNextElement(root);
+		}
+		
+		if(root.right != null) {
+			if(root.next == null)
+				root.right.next = root.next;
+			else
+				root.right.next = getNextElement(root); 
+		}
+		
+		connectAdjacentNodesUtil(root.left);
+		connectAdjacentNodesUtil(root.right);
+		connectAdjacentNodesUtil(root.next);
+		
+		
+	}
+
+	private static TreeLinkNode getNextElement(TreeLinkNode root) {
+		if(root == null)
+			return null;
+		root = root.next;
+		while(root != null) {
+			if(root.left != null)
+				return root.left;
+			if(root.right != null)
+				return root.right;
+			root = root.next;
+		}
+		return root;
+	}
+
+	//This method only works for complete binary trees
 	private static void linkedNodesOnSameLevel(TreeLinkNode root) {
         
         if(root == null)
@@ -53,17 +104,29 @@ public class ConnectNodesAtSameLevel {
 	}
 	
 	
+	
+	
 	public static void printNodesOnSameLevel(TreeLinkNode root) {
        
 		if(root == null)
 			return;
-        	TreeLinkNode tmp = root;
-            while(tmp != null) {
-            	System.out.print(tmp.val + "->");
-            	tmp = tmp.next;
-            }
-            System.out.println();
-    		printNodesOnSameLevel(root.left);
+        Queue<TreeLinkNode> que = new LinkedList<TreeLinkNode>();
+
+    	que.add(root);
+        while(!que.isEmpty()) {
+        	TreeLinkNode tmp = que.poll();
+        	System.out.println();
+        	while(tmp != null) {
+        		System.out.print(tmp.val+ "->");
+    			if(que.isEmpty()) {
+    	        	if(tmp.left != null)
+    	        		que.add(tmp.left);
+    	        	else if(tmp.right != null)
+    	        		que.add(tmp.right);
+    	        	}
+    			tmp = tmp.next;
+        	}
+        }
     }
         
 
