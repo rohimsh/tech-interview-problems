@@ -30,7 +30,7 @@ public class _DetectAndRemoveLoopInLinkedList {
 		
 		// Detect Loop
 		ListNode slow = head, fast = head;
-		
+
 		slow = slow.next;
 		fast = fast.next.next;
 		

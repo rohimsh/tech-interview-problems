@@ -22,7 +22,6 @@ public class ConvertBinaryTreeToItsMirrorTree {
         convertToMirror(root);
         System.out.println();
         TraverseLevelorderIterative.levelOrderPrintOnDifferentLevelsWithSingleQueue(root);
-        
 	}
 
 	private static TreeNode convertToMirror(TreeNode root) {

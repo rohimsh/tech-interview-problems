@@ -12,7 +12,7 @@ public class KthSmallestElementInArray {
 	public static void main(String[] args) {
 		 int arr[] = {12, 3, 5, 7, 19, 0, -2, 34, 2, 6};
 		 int k = 5;
-		 int kthSmallestUsingBubbleSort = findKthSmallestElementUsingBubbbleSort(arr, k, arr.length);
+		 int kthSmallestUsingBubbleSort = findKthSmallestElementUsingBubbleSort(arr, k, arr.length);
 		 System.out.println(kthSmallestUsingBubbleSort);
 		 int kthSmallestUsingSorting = findKthSmallestElementUsingSorting(arr, k, arr.length);
 		 System.out.println(kthSmallestUsingSorting);
@@ -23,7 +23,7 @@ public class KthSmallestElementInArray {
 		 
 	}
 
-	private static int findKthSmallestElementUsingBubbbleSort(int[] arr, int k, int length) {
+	private static int findKthSmallestElementUsingBubbleSort(int[] arr, int k, int length) {
 		for(int i = 0; i < k; i++) {
 			int min = i;
 			for(int j = i + 1; j < length; j++) {

@@ -6,7 +6,7 @@ import utils.Util;
 
 public class ArrayRotation {
 	 /* utility function to print an array */
-    public static void printArray(int arr[], int size) 
+    public static void printArray(int arr[], int size)
     {
         System.out.println();
         for (int i = 0; i < size; i++)

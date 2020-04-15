@@ -14,10 +14,10 @@ public class Dijkstra {
 						            { 0, 0, 0, 14, 0, 2, 0, 1, 6 },
 						            { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
 						            { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-        Dijskstra(graph, 0);
+        Dijkstra(graph, 0);
 	}
 	
-	public static void Dijskstra(int[][] graph, int source) {
+	public static void Dijkstra(int[][] graph, int source) {
 		int V = graph.length;
 		boolean[] path = new boolean[V];
 		int[] dist = new int[V];

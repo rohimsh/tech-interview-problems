@@ -18,15 +18,14 @@ public class Util {
 			int tmp = arr[start];
 			arr[start] = arr[end];
 			arr[end] = tmp;
-			start ++;
-			end --;
+			start++;
+			end--;
 		}
 		
 	}
 	
 	public static int binarySearchIterative(int[] arr, int start, int end, int key) {
 		
-		int index = -1;
 		while(start <= end) {
 			
 			int mid = start + (end - start) / 2;
@@ -39,7 +38,7 @@ public class Util {
 				end = mid - 1;
 			}	
 		}
-		return index;
+		return -1;
 	}
 	
 	
@@ -53,7 +52,7 @@ public class Util {
 			if(arr[mid] < key)
 				return binarySearchRecursive(arr, mid + 1, end, key);
 			else
-				return binarySearchIterative(arr, start, mid - 1, key);
+				return binarySearchRecursive(arr, start, mid - 1, key);
 			
 		}
 		return -1;

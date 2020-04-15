@@ -12,10 +12,8 @@ import utils.Util;
 public class _CheckIfLinkedListIsPalindrome {
 
 	public static void main(String[] args) {
-		ListNode head;
-	    
 	    /* Constructed Linked List is 1->2->3->4->5->4->3->2->1->null */
-		head = new ListNode(1);
+		ListNode head = new ListNode(1);
 		head.next = new ListNode(2);
 		head.next.next = new ListNode(3);
 		head.next.next.next = new ListNode(4);
@@ -63,7 +61,7 @@ public class _CheckIfLinkedListIsPalindrome {
 	private static boolean isListPalindromeUsingStack(ListNode head) {
 		if(head == null || head.next == null)
 			return true;
-		Stack<ListNode> stack = new Stack<ListNode>();
+		Stack<ListNode> stack = new Stack<>();
 		
 		ListNode slow = head, fast = head;
 		

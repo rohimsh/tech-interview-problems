@@ -25,6 +25,33 @@ public class _ReverseListInGroupsofkSize {
     	Util.printLinkedList(reversedHeadHybrid);
     	ListNode reversedHeadRecursive = reverseListInKSizeRecursively(reversedHeadHybrid, K);
     	Util.printLinkedList(reversedHeadRecursive);
+		ListNode reversedHead = reverseRecursively(head, K);
+		Util.printLinkedList(reversedHead);
+	}
+
+	private static ListNode reverseRecursively(ListNode head, int k){
+		if(head == null || head.next == null)
+			return head;
+		int count = 0;
+		ListNode prev = null, curr = head, tmp = curr;
+		while(count < k && tmp != null){
+			tmp = tmp.next;
+			count++;
+		}
+		if(count < k){
+			return head;
+		}
+		ListNode reverseHead = reverseRecursively(tmp, k);
+		count = 0;
+		while(count < k){
+			ListNode next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+			count++;
+		}
+		head.next = reverseHead;
+		return prev;
 	}
 
 	private static ListNode reverseListInKSizeRecursively(ListNode head, int K) {

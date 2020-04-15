@@ -43,4 +43,19 @@ public class RemoveDuplicatesFromSortedLinkedList {
 		return head;
 		
 	}
+
+	public ListNode deleteDuplicates(ListNode head) {
+		if(head == null || head.next == null)
+			return head;
+		ListNode curr = head;
+		while(curr != null){
+			ListNode tmp = curr.next;
+			while(tmp != null && tmp.val == curr.val){
+				curr.next = tmp.next;
+				tmp = tmp.next;
+			}
+			curr = curr.next;
+		}
+		return head;
+	}
 }

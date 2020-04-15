@@ -44,11 +44,9 @@ public class _ReverseLinkedList {
 	public static ListNode reverseListRecursively(ListNode head) {
 		if(head == null || head.next == null)
 			return head;
-		ListNode headNext = head.next;
+		ListNode reversedHead = reverseListRecursively(head.next);
+		head.next.next = head;
 		head.next = null;
-		ListNode reversedHead = reverseListRecursively(headNext);
-		headNext.next = head;
-		
 		return reversedHead;
 	}
 }

@@ -34,25 +34,22 @@ public class ConnectNodesAtSameLevel {
 		if(root == null)
 			return;
 
+		connectAdjacentNodesUtil(root.next);
+
 		if(root.left != null) {
-			if(root.right != null)
+			if(root.right != null){
 				root.left.next = root.right;
+			}
 			else
 				root.left.next = getNextElement(root);
 		}
 		
 		if(root.right != null) {
-			if(root.next == null)
-				root.right.next = root.next;
-			else
-				root.right.next = getNextElement(root); 
+			root.right.next = getNextElement(root);
 		}
 		
 		connectAdjacentNodesUtil(root.left);
 		connectAdjacentNodesUtil(root.right);
-		connectAdjacentNodesUtil(root.next);
-		
-		
 	}
 
 	private static TreeLinkNode getNextElement(TreeLinkNode root) {
